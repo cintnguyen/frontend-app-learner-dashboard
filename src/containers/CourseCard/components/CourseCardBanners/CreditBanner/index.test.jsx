@@ -6,6 +6,7 @@ import { formatMessage } from 'testUtils';
 import hooks from './hooks';
 import messages from './messages';
 import CreditBanner from '.';
+import { MailtoLink } from '@edx/paragon';
 
 jest.mock('components/Banner', () => 'Banner');
 
@@ -51,8 +52,8 @@ describe('CreditBanner component', () => {
       it('includes credit-error-msg with support email link', () => {
         expect(el.find('.credit-error-msg').containsMatchingElement(
           formatMessage(messages.error, {
-            supportEmailLink: (<EmailLink address={supportEmail} />),
-          }),
+            supportEmailLink: (<MailtoLink address={supportEmail} />),
+          }), 
         )).toEqual(true);
       });
       it('loads ContentComponent with cardId', () => {
