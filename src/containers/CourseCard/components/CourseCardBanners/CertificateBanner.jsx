@@ -33,7 +33,7 @@ export const CertificateBanner = ({ cardId }) => {
       <Banner variant="danger">
         { supportEmail ? formatMessage(messages.certRestricted, { supportEmail: emailLink(supportEmail) }) : formatMessage(messages.certRestrictedNoEmail)}
         {isVerified && '  '}
-        {isVerified && (billingEmail ? formatMessage(messages.certRefundContactBilling,{ billingEmail: emailLink(billingEmail)}) : formatMessage(messages.certRefundContactBillingNoEmail))}
+        {isVerified && (billingEmail ? formatMessage(messages.certRefundContactBilling, { billingEmail: emailLink(billingEmail) }) : formatMessage(messages.certRefundContactBillingNoEmail))}
       </Banner>
     );
   }

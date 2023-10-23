@@ -9,7 +9,7 @@
   "scripts": {
     "build": "fedx-scripts webpack",
     "i18n_extract": "BABEL_ENV=i18n fedx-scripts babel src --quiet > /dev/null",
-    "lint": "fedx-scripts eslint --ext .jsx,.js src/",
+    "lint": "fedx-scripts eslint --fix --ext .jsx,.js src/",
     "lint-fix": "fedx-scripts eslint --fix --ext .jsx,.js src/",
     "semantic-release": "semantic-release",
     "start": "fedx-scripts webpack-dev-server --progress",
