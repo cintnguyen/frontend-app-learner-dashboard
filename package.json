@@ -13,7 +13,7 @@
     "lint-fix": "fedx-scripts eslint --fix --ext .jsx,.js src/",
     "semantic-release": "semantic-release",
     "start": "fedx-scripts webpack-dev-server --progress",
-    "test": "TZ=GMT fedx-scripts jest --updateSnapshot CertificateBanner.test.jsx --passWithNoTests",
+    "test": "TZ=GMT fedx-scripts jest --updateSnapshot --coverage --passWithNoTests",
     "quality": "npm run lint-fix && npm run test",
     "watch-tests": "jest --watch",
     "snapshot": "fedx-scripts jest --updateSnapshot",

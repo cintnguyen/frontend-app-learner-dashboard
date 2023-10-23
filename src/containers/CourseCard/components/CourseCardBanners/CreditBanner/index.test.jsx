@@ -8,7 +8,6 @@ import hooks from './hooks';
 import messages from './messages';
 import CreditBanner from '.';
 
-
 jest.mock('components/Banner', () => 'Banner');
 
 jest.mock('./hooks', () => ({
@@ -53,8 +52,8 @@ describe('CreditBanner component', () => {
       it('includes credit-error-msg with support email link', () => {
         expect(el.find('.credit-error-msg').containsMatchingElement(
           formatMessage(messages.error, {
-            supportEmailLink: (<MailtoLink address={supportEmail} />),
-          }), 
+            supportEmailLink: (<MailtoLink to={supportEmail}>{supportEmail}</MailtoLink>),
+          }),
         )).toEqual(true);
       });
       it('loads ContentComponent with cardId', () => {

@@ -17,9 +17,11 @@ exports[`CreditBanner component render with error state snapshot 1`] = `
       }
       values={
         Object {
-          "supportEmailLink": <EmailLink
-            address="test-support-email"
-          />,
+          "supportEmailLink": <MailtoLink
+            to="test-support-email"
+          >
+            test-support-email
+          </MailtoLink>,
         }
       }
     />
