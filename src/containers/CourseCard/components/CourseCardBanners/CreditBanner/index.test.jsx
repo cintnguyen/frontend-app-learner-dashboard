@@ -2,11 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { formatMessage } from 'testUtils';
+import { MailtoLink } from '@edx/paragon';
 
 import hooks from './hooks';
 import messages from './messages';
 import CreditBanner from '.';
-import { MailtoLink } from '@edx/paragon';
+
 
 jest.mock('components/Banner', () => 'Banner');
 
