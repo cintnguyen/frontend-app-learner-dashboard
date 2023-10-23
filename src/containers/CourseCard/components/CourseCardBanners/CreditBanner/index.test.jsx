@@ -3,14 +3,11 @@ import { shallow } from 'enzyme';
 
 import { formatMessage } from 'testUtils';
 
-import EmailLink from 'components/EmailLink';
-
 import hooks from './hooks';
 import messages from './messages';
 import CreditBanner from '.';
 
 jest.mock('components/Banner', () => 'Banner');
-jest.mock('components/EmailLink', () => 'EmailLink');
 
 jest.mock('./hooks', () => ({
   useCreditBannerData: jest.fn(),
