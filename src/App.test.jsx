@@ -37,11 +37,6 @@ jest.mock('hooks', () => ({
 }));
 jest.mock('data/store', () => 'data/store');
 
-const logo = 'fakeLogo.png';
-
-jest.mock('@edx/frontend-platform', () => ({
-  getConfig: jest.fn(() => ({ LOGO_POWERED_BY_OPEN_EDX_URL_SVG: logo })),
-}));
 
 const loadData = jest.fn();
 reduxHooks.useLoadData.mockReturnValue(loadData);
@@ -66,7 +61,7 @@ describe('App router component', () => {
         expect(el.instance.findByType(LearnerDashboardHeader).length).toEqual(1);
       });
       test('Footer logo drawn from env variable', () => {
-        expect(el.instance.findByType(Footer)[0].props.logo).toEqual(logo);
+        expect(el.instance.findByType(Footer)[0].props.logo).toEqual('fakeLogo.png');
       });
       it('wraps the header and main components in an AppWrapper widget container', () => {
         const container = el.instance.findByType(AppWrapper)[0];
@@ -76,6 +71,9 @@ describe('App router component', () => {
     };
     describe('no network failure', () => {
       beforeAll(() => {
+        jest.mock('@edx/frontend-platform', () => ({
+          getConfig: jest.fn(() => ({ LOGO_POWERED_BY_OPEN_EDX_URL_SVG: 'fakeLogo.png' })),
+        }));
         reduxHooks.useRequestIsFailed.mockReturnValue(false);
         el = shallow(<App />);
       });
@@ -93,6 +91,9 @@ describe('App router component', () => {
     });
     describe('initialize failure', () => {
       beforeAll(() => {
+        jest.mock('@edx/frontend-platform', () => ({
+          getConfig: jest.fn(() => ({ LOGO_POWERED_BY_OPEN_EDX_URL_SVG: 'fakeLogo.png' })),
+        }));
         reduxHooks.useRequestIsFailed.mockImplementation((key) => key === RequestKeys.initialize);
         el = shallow(<App />);
       });
@@ -110,6 +111,9 @@ describe('App router component', () => {
     });
     describe('refresh failure', () => {
       beforeAll(() => {
+        jest.mock('@edx/frontend-platform', () => ({
+          getConfig: jest.fn(() => ({ LOGO_POWERED_BY_OPEN_EDX_URL_SVG: 'fakeLogo.png' })),
+        }));
         reduxHooks.useRequestIsFailed.mockImplementation((key) => key === RequestKeys.refreshList);
         el = shallow(<App />);
       });
@@ -124,6 +128,35 @@ describe('App router component', () => {
         expect(errorPage.type).toEqual('ErrorPage');
         expect(errorPage.props.message).toEqual(formatMessage(messages.errorMessage, { supportEmail }));
       });
+    });
+
+    describe('helmet with optimizely URL', () => {
+      beforeAll(() => {
+        jest.mock('@edx/frontend-platform', () => ({
+          getConfig: jest.fn(() => ({
+            LOGO_POWERED_BY_OPEN_EDX_URL_SVG: 'fakeLogo.png',
+            OPTIMIZELY_URL: 'fake.url',
+          })),
+        }));
+        reduxHooks.useRequestIsFailed.mockReturnValue(false);
+        el = shallow(<App />);
+      });
+      runBasicTests();
+    });
+
+    describe('helmet with optimizely project ID', () => {
+      beforeAll(() => {
+        jest.mock('@edx/frontend-platform', () => ({
+          getConfig: jest.fn(() => ({
+            LOGO_POWERED_BY_OPEN_EDX_URL_SVG: 'fakeLogo.png',
+            OPTIMIZELY_PROJECT_ID: 'fakeID',
+            MARKETING_SITE_BASE_URL: 'fake.url',
+          })),
+        }));
+        reduxHooks.useRequestIsFailed.mockReturnValue(false);
+        el = shallow(<App />);
+      });
+      runBasicTests();
     });
   });
 });

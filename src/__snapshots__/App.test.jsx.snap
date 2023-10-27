@@ -1,5 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`App router component component helmet with optimizely URL snapshot 1`] = `
+<Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Learner Home
+    </title>
+    <link
+      href="https://edx-cdn.org/v3/default/favicon.ico"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+  </HelmetWrapper>
+  <div>
+    <AppWrapper>
+      <LearnerDashboardHeader />
+      <main>
+        <ExperimentProvider>
+          <Dashboard />
+        </ExperimentProvider>
+      </main>
+    </AppWrapper>
+    <Footer />
+    <ZendeskFab />
+  </div>
+</Fragment>
+`;
+
+exports[`App router component component helmet with optimizely project ID snapshot 1`] = `
+<Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <title>
+      Learner Home
+    </title>
+    <link
+      href="https://edx-cdn.org/v3/default/favicon.ico"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+  </HelmetWrapper>
+  <div>
+    <AppWrapper>
+      <LearnerDashboardHeader />
+      <main>
+        <ExperimentProvider>
+          <Dashboard />
+        </ExperimentProvider>
+      </main>
+    </AppWrapper>
+    <Footer />
+    <ZendeskFab />
+  </div>
+</Fragment>
+`;
+
 exports[`App router component component initialize failure snapshot 1`] = `
 <Fragment>
   <HelmetWrapper
